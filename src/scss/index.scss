@@ -1,0 +1,171 @@
+$bg-color: darkblue;
+$background: linear-gradient(45deg, $bg-color, lighten($bg-color, 45));
+
+$app-background: #fefefe;
+$geosuggest-padding: 7px;
+
+$geosuggest-active-background:  #267dc0;
+$geosuggest-active-color: #fff;
+
+$normal-font: 18px;
+$large-font: 27px;
+
+$default-text-color: black;
+
+body {
+  width: 100%;
+  height: 100%;
+
+  background: $background;
+  font-family: Arial;
+
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+
+.App {
+  margin-top: 20px;
+  background: $app-background;
+  color: $default-text-color;
+
+  box-shadow: 5px 5px 10px black;
+  padding: 10px;
+  width: 450px;
+  font-size: $normal-font;
+}
+
+
+/*
+  GEO SUGGEST
+ */
+.geosuggest__suggests--hidden {
+  max-height: 0;
+  overflow: hidden;
+  border-width: 0;
+}
+
+.geosuggest {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+}
+.geosuggest input {
+  outline: none;
+  width: 100%;
+  padding: $geosuggest-padding;
+}
+.geosuggest__sugests-wrapper {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+}
+.geosuggest__suggests {
+  left: 0;
+  right: 0;
+  position: absolute;
+  background: $app-background;
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+  box-shadow: 1px 1px 3px inset;
+}
+.geosuggest__item {
+  list-style-type: none;
+  padding: $geosuggest-padding;
+  cursor: pointer;
+}
+
+.geosuggest__item:hover {
+  background: $geosuggest-active-background;
+  color: $geosuggest-active-color;
+}
+
+.geosuggest__item--active {
+  background: $geosuggest-active-background;
+  color: $geosuggest-active-color;
+}
+
+.geosuggest__item--active:hover {
+  background: darken($geosuggest-active-background, 10);
+}
+
+
+/*
+  Weather
+ */
+.Weather {
+  padding: 10px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.WeatherOverview {
+  flex-grow: 1;
+}
+.Weather .CityName {
+  font-size: $large-font;
+  font-weight: bold;
+  color: rgb(25, 25, 25);
+}
+
+$img-size: 60px;
+.Weather img {
+  width: $img-size;
+  height: $img-size;
+}
+
+.Weather .Temperature {
+  color: rgb(25, 25, 25);
+  font-size: 60px;
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+/*
+  Forecast
+ */
+
+.Forecast {
+  padding-top: 3px;
+  display: flex;
+  flex-direction: column;
+}
+.ForecastHeader {
+  color: black;
+  font-weight: bold;
+  border-bottom: 2px solid;
+}
+
+.ForecastDays {
+  font-size: $normal-font;
+  display: flex;
+  flex-direction: row;
+  background: lighten($bg-color, 70);
+  border: 1px solid;
+}
+
+.ForecastDay {
+  padding: 10px 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+$temp-padding: 2px;
+
+.ForecastTemps .High {
+  color: black;
+  font-weight: bold;
+  padding-right: $temp-padding;
+}
+
+.ForecastTemps .Low {
+  font-weight: bold;
+  padding-left: $temp-padding;
+}
