@@ -2,8 +2,9 @@
 
 Web app that shows current weather and a five day forecast.
 
-##Preview
+## Preview
 ![Preview image not loading](/Preview.png) 
+
 ## Getting Started
 ```
 npm install --prod  
