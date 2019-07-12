@@ -2,7 +2,7 @@
 
 Web app that shows current weather and a five day forecast.
 
-I made this for an interview project for my current employer. View 
+I made this for an interview project with my current employer. View 
 [Typing Party](https://github.com/AdamLoe/TypingParty)
 or
 [ExpenditureApproval](https://github.com/AdamLoe/expenditure-approval)
