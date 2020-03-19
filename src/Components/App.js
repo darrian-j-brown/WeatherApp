@@ -146,7 +146,7 @@ class App extends React.Component {
       <div className="App">
         <form onSubmit={this.handleOnSubmit}>
         <Geosuggest
-          placeholder="Start typing!"
+          placeholder="Search by City, Zipcode, or Coordinates!"
           ref={el => (this._geoSuggest = el)}
           onSuggestSelect={this.onSuggestSelect}
           autoActivateFirstSuggest={true}
