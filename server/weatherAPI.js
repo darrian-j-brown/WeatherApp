@@ -78,5 +78,5 @@ module.exports = async (req, res) => {
     forecast
   });
 
-  console.log("Got Weather Data for", forecast);
+  console.log("Got Weather Data for", weather.name);
 };
