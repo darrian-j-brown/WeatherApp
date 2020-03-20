@@ -28,6 +28,23 @@ let getUrl = (type, data) => {
   return url;
 };
 
+let getNews = (country) =>
+  new Promise((resolve, reject) => {
+  let url = 'http://newsapi.org/v2/top-headlines?'
+  url += 'country=' + country;
+  url += '&apiKey=' + 'dbd7cc2828a14c479a079e48058d3bcb';
+
+  axios
+    .get(url)
+    .then(res => {
+      resolve(res.data);
+    })
+    .catch(err => {
+      reject('server error ', err.message);
+    });
+  });
+    
+
 //Async API Call
 // let getData = (type, lat, lon) =>
 //   new Promise((resolve, reject) => {
@@ -68,15 +85,26 @@ module.exports = async (req, res) => {
   //Call APIs
   let weather = getData("weather", data);
   let forecast = getData("forecast", data);
+  
 
   //Parallel API Await
   [weather, forecast] = [await weather, await forecast];
 
+  let news = getNews(weather.sys.country);
+  [news] = [await news];
+
+  news = news.articles[0];
+  console.log(news);
+  
+
   //Send Data to client
   res.json({
     weather,
-    forecast
+    forecast,
+    news
   });
 
   console.log("Got Weather Data for", weather.name);
 };
+
+// note$: In the response object there a sys object and it contains a country variable that can be use in the search for the top news for the specified country 
