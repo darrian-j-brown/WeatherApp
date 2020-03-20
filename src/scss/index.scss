@@ -16,7 +16,9 @@ body {
   width: 100%;
   height: 100%;
 
-  background: $background;
+  background-image: url('https://lh3.googleusercontent.com/proxy/Jo9991yD_bpuypHO7s486CSPs6QPSRGTLSasQ4uDSPGXQfh3YJzde2E3dOpLPzHI9mtrJC9WPvOyMJTobap5POMRmmkPDNOWTIDaEamYjfti04udjTZVt-dWuwhd7CRiWwHho0d8h5bVeL347gXBSlyRQLkjMSZr5UJTXvQ');
+  background-repeat: no-repeat;
+  background-size: 100%;
   font-family: Arial;
 
   display: flex;
@@ -32,10 +34,58 @@ body {
 
   box-shadow: 5px 5px 10px black;
   padding: 10px;
-  width: 450px;
+  width: 850px;
   font-size: $normal-font;
+  border-radius: 10px;
+}
+.News {
+  margin-top: 20px;
+  font-size: $normal-font;
+  display: flex;
+  flex-direction: row;
+  background: lighten($bg-color, 70);
+  border: 1px solid;
 }
 
+.newsAuthor {
+  padding : 0;
+  margin : 0;
+  line-height : 20px;
+}
+
+.newsDiv {
+  margin: 0 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  
+}
+.newsDiv span, h5 {
+  padding : 0;
+  margin : 0;
+  line-height : 10px;
+}
+
+.newsDiv span {
+  padding-left: 20px;
+  display: inline-block;
+  animation: newsDiv 20s linear infinite;
+  animation-delay: 2.5s;
+}
+
+
+@keyframes newsDiv {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100%, 0);
+  }
+}
+
+button {
+  width: 100%;
+}
 
 /*
   GEO SUGGEST
@@ -119,9 +169,10 @@ $img-size: 60px;
 
 .Weather .Temperature {
   color: rgb(25, 25, 25);
-  font-size: 60px;
+  font-size: 100px;
   display: flex;
   flex-direction: row;
+  text-align: center;
 }
 
 

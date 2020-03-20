@@ -1,4 +1,5 @@
 //Kelvin to Fahrenheit
+
 export let fixTemp = temp => Math.round((temp * 9) / 5 - 459.67);
 
 let dayArr = [
@@ -26,6 +27,7 @@ export let getDate = (timestamp, timeOffset) => {
   }
   return new Date((timestamp + offsetChange) * 1000);
 };
+
 
 // new Date => Wednesday 3:30 AM
 export let getTimeString = date => {
