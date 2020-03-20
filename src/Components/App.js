@@ -14,16 +14,17 @@ class App extends React.Component {
       timeOffset: null
     },
     weather: null, // Easier empty object checking
-    forecast: null
+    forecast: null,
+    news: null
   };
 
   //Callback to update weather and forecast
-  updateWeatherState = ({ weather, forecast }) => {
-    console.log(weather, forecast);
+  updateWeatherState = ({ weather, forecast, news }) => {
     this.setState(state => ({
       ...state,
       weather,
-      forecast
+      forecast,
+      news
     }));
   };
 
@@ -62,7 +63,7 @@ class App extends React.Component {
     if (geoData) {
       this._geoSuggest.clear();
       this._geoSuggest.blur();
-
+      console.log('geoData', geoData)
       let { lat, lng } = geoData.location;
       let data = {
         lat: lat,
@@ -132,15 +133,25 @@ class App extends React.Component {
     getWeatherByMe(data, this.updateWeatherState);
    }
 
+   displayNews = (news) => {
+    return (
+      <div>
+        <h6>{news.author}</h6>
+        <h5><a href={news.url}>{news.description}</a></h5>
+      </div>
+    )
+   }
+
   componentWillMount() {
     navigator.geolocation.getCurrentPosition(this.getCurrentPos);
   }
 
   render() {
-    let { info, weather, forecast } = this.state;
+    let { info, weather, forecast, news } = this.state;
 
     let showWeather = weather !== null;
     let showForecast = forecast !== null;
+    let showNews = news !== null;
 
     return (
       <div className="App">
@@ -155,7 +166,12 @@ class App extends React.Component {
         />
         <button type="submit">Search</button>
         </form>
-
+        <div>
+          {showNews 
+          ? this.displayNews(news)
+          : 'Getting news...'}
+        </div>
+        
         {showWeather && <Weather info={info} data={weather} />}
         {showForecast && <Forecast info={info} data={forecast} />}
       </div>

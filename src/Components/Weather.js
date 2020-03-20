@@ -2,7 +2,7 @@ import React from "react";
 
 import { fixTemp, getDate, getTimeString, getImgURL } from "../Helpers/fixData";
 
-let Weather = ({ info, data }) => {
+let Weather = ({ info, data }) => { 
   //Get New York, NY
   //Won't have location stored for HTML Geolocation
   //Will grab worse data from OpenWeatherAPI
@@ -12,6 +12,7 @@ let Weather = ({ info, data }) => {
     let country = data.sys.country;
     location = name + ", " + country;
   }
+  
 
   //Get local timestamp, convert to readable string
   let date = getDate(data.dt, timeOffset);
