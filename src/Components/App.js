@@ -41,12 +41,12 @@ class App extends React.Component {
       // check to see if the string includes a ',' this verifies that input must be cooridnates
       if(input.includes(',')) {
         console.log('this must be coordinates');
+        // in case user does not use space in their coordinates
         if(input.includes(', ')) {
           array = input.split(', ')
         } else {
           array = input.split(',')
         }
-        // let array = input.split(', ') || input.split(',');
         console.log(array);
         data.lat = array[0];
         data.lng = array[1];
@@ -86,24 +86,6 @@ class App extends React.Component {
     }
   };
 
-  // onSuggestSelect = geoData => {
-  //   if (geoData) {
-  //     this._geoSuggest.clear();
-  //     this._geoSuggest.blur();
-
-  //     let { lat, lng } = geoData.location;
-  //     this.updateWeatherByCoords(lat, lng);
-
-  //     let { location, timeOffset } = getGeoInfo(geoData);
-  //     this.setState(state => ({
-  //       ...state,
-  //       info: {
-  //         location,
-  //         timeOffset
-  //       }
-  //     }));
-  //   }
-  // };
 
   //Get geolocation position, and update
   getCurrentPos = data => {
@@ -114,12 +96,6 @@ class App extends React.Component {
     this.updateWeatherByCoords(data);
   };
 
-  // getCurrentPos = data => {
-  //   console.log('getCurrentPos', data);
-  //   let { latitude, longitude } = data.coords;
-    
-  //   this.updateWeatherByCoords(latitude, longitude);
-  // };
 
   // Grabs the value from the input bar
   handleGeosuggestChange = value => {
