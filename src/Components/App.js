@@ -135,9 +135,10 @@ class App extends React.Component {
 
    displayNews = (news) => {
     return (
-      <div>
-        <h6>{news.author}</h6>
-        <h5><a href={news.url}>{news.description}</a></h5>
+      <div className="newsDiv">
+        News Headlines:
+        <h5>{news.author}</h5>
+        <p><span><a href={news.url}>{news.description}</a></span></p>
       </div>
     )
    }
@@ -166,14 +167,14 @@ class App extends React.Component {
         />
         <button type="submit">Search</button>
         </form>
-        <div>
+        
+        {showWeather && <Weather info={info} data={weather} />}
+        {showForecast && <Forecast info={info} data={forecast} />}
+        <div className="News">
           {showNews 
           ? this.displayNews(news)
           : 'Getting news...'}
         </div>
-        
-        {showWeather && <Weather info={info} data={weather} />}
-        {showForecast && <Forecast info={info} data={forecast} />}
       </div>
     );
   }
