@@ -32,18 +32,22 @@ class App extends React.Component {
   updateWeatherByCoords = (data) =>
     getWeatherByMe(data, this.updateWeatherState);
 
-  // updateWeatherByCoords = (lat, lng) =>
-  //   getWeather(lat, lng, this.updateWeatherState);
 
   chechInput = (input) => {
     let data = {};
+    let array;
     if(isNaN(input)) {
       console.log('string');
       // check to see if the string includes a ',' this verifies that input must be cooridnates
       if(input.includes(',')) {
         console.log('this must be coordinates');
-        let array = input.split(', ');
-
+        if(input.includes(', ')) {
+          array = input.split(', ')
+        } else {
+          array = input.split(',')
+        }
+        // let array = input.split(', ') || input.split(',');
+        console.log(array);
         data.lat = array[0];
         data.lng = array[1];
       } else {
