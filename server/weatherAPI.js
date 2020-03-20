@@ -1,18 +1,8 @@
 let axios = require("axios");
+let {API_KEY} = require('./config');
 
 //Build our OpenWeatherAPI Url
-// let getUrl = (type, lat, lon) => {
-//   let url = "";
-//   url += "https://api.openweathermap.org/data/2.5/" + type;
-//   url += "?lat=" + lat;
-//   url += "&lon=" + lon;
-//   url += "&appid=b48bb8b80a8a300bdae80be70fa028d9";
-
-//   return url;
-// };
-
 let getUrl = (type, data) => {
-  console.log('data', data);
   const { lat, lon, city, zip} = data;
   let url = "";
   url += "https://api.openweathermap.org/data/2.5/" + type;
@@ -32,7 +22,7 @@ let getNews = (country) =>
   new Promise((resolve, reject) => {
   let url = 'http://newsapi.org/v2/top-headlines?'
   url += 'country=' + country;
-  url += '&apiKey=' + 'dbd7cc2828a14c479a079e48058d3bcb';
+  url += '&apiKey=' + API_KEY;
 
   axios
     .get(url)
@@ -63,7 +53,6 @@ let getNews = (country) =>
   let getData = (type, data) =>
   new Promise((resolve, reject) => {
     let url = getUrl(type, data);
-    console.log('url', url);
 
     axios
       .get(url)
@@ -94,7 +83,6 @@ module.exports = async (req, res) => {
   [news] = [await news];
 
   news = news.articles[0];
-  console.log(news);
   
 
   //Send Data to client
